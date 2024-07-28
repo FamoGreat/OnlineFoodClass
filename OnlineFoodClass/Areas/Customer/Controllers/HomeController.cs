@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineFoodClass.Models;
+using OnlineFoodClass.Repositories;
 using System.Diagnostics;
 
 namespace OnlineFoodClass.Areas.Customer.Controllers
@@ -8,20 +9,27 @@ namespace OnlineFoodClass.Areas.Customer.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUnitOfWork _unitOfWork;
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var courses = await _unitOfWork.Course.GetAllAsync();
+            return View(courses);
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            var course = await _unitOfWork.Course.GetAsync(c => c.Id == id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            return View(course);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -12,7 +12,7 @@ using OnlineFoodClass.Data;
 namespace OnlineFoodClass.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240727154611_CourseTable")]
+    [Migration("20240727215457_CourseTable")]
     partial class CourseTable
     {
         /// <inheritdoc />
@@ -34,7 +34,6 @@ namespace OnlineFoodClass.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
@@ -42,7 +41,6 @@ namespace OnlineFoodClass.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")

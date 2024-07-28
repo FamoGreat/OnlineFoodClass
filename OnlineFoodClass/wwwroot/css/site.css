@@ -1,22 +1,32 @@
+/* Base font size for different screen sizes */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
+/* Ensure the html element takes the full height */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
+/* Add margin to the bottom of the body for footer spacing */
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+/* Additional utility classes if needed */
+.table-responsive img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.card-footer .btn {
+    margin-bottom: 0.5rem;
 }

@@ -4,68 +4,86 @@
     ViewData["Title"] = "Create Course";
 }
 
-<div class="container mt-5">
-    <div class="card bg-light mb-3" style="max-width: 40rem;">
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card bg-light mb-3" style="width: 60rem;">
         <div class="card-header">Create Course</div>
         <div class="card-body">
-            <h4 class="card-title">Enter Course Details</h4>
-            <form asp-action="Create">
-                <fieldset>
-                    <div class="mb-3">
-                        <label for="Name" class="form-label">Course Name</label>
-                        <input type="text" class="form-control" id="Name" name="Name" value="@Model?.Name" placeholder="Enter course name">
-                        <span asp-validation-for="Name" class="text-primary"></span>
-                    </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <form asp-action="Create" enctype="multipart/form-data" method="post">
+                        <fieldset>
+                            <div class="mb-3">
+                                <label for="Name" class="form-label">Course Name</label>
+                                <input type="text" class="form-control" id="Name" name="Name" value="@Model?.Name" placeholder="Enter course name">
+                                <span asp-validation-for="Name" class="text-primary"></span>
+                            </div>
 
-                    <div class="mb-3">
-                        <label for="Description" class="form-label">Description</label>
-                        <textarea class="form-control" id="Description" name="Description" rows="3" placeholder="Enter course description">@Model?.Description</textarea>
-                        <span asp-validation-for="Description" class="text-primary"></span>
-                    </div>
+                            <div class="mb-3">
+                                <label for="Description" class="form-label">Description</label>
+                                <textarea class="form-control" id="Description" name="Description" rows="3" placeholder="Enter course description">@Model?.Description</textarea>
+                                <span asp-validation-for="Description" class="text-primary"></span>
+                            </div>
 
-                    <div class="mb-3">
-                        <label for="Price" class="form-label">Price</label>
-                        <input type="number" class="form-control" id="Price" name="Price" value="@Model?.Price" placeholder="Enter price">
-                        <span asp-validation-for="Price" class="text-primary"></span>
-                    </div>
+                            <div class="mb-3">
+                                <label for="Price" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="Price" name="Price" value="@Model?.Price" placeholder="Enter price">
+                                <span asp-validation-for="Price" class="text-primary"></span>
+                            </div>
 
-                    <div class="mb-3">
-                        <label for="StartDate" class="form-label">Start Date</label>
-                        <input type="date" class="form-control" id="StartDate" name="StartDate" value="@Model?.StartDate.ToString("yyyy-MM-dd")">
-                        <span asp-validation-for="StartDate" class="text-primary"></span>
-                    </div>
+                            <div class="mb-3">
+                                <label for="StartDate" class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="StartDate" name="StartDate" value="@Model?.StartDate.ToString("yyyy-MM-dd")">
+                                <span asp-validation-for="StartDate" class="text-primary"></span>
+                            </div>
 
-                    <div class="mb-3">
-                        <label for="EndDate" class="form-label">End Date</label>
-                        <input type="date" class="form-control" id="EndDate" name="EndDate" value="@Model?.EndDate.ToString("yyyy-MM-dd")">
-                        <span asp-validation-for="EndDate" class="text-primary"></span>
-                    </div>
+                            <div class="mb-3">
+                                <label for="EndDate" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="EndDate" name="EndDate" value="@Model?.EndDate.ToString("yyyy-MM-dd")">
+                                <span asp-validation-for="EndDate" class="text-primary"></span>
+                            </div>
 
-                    <div class="mb-3">
-                        <label for="Location" class="form-label">Location</label>
-                        <input type="text" class="form-control" id="Location" name="Location" value="@Model?.Location" placeholder="Enter location">
-                        <span asp-validation-for="Location" class="text-primary"></span>
-                    </div>
+                            <div class="mb-3">
+                                <label for="Location" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="Location" name="Location" value="@Model?.Location" placeholder="Enter location">
+                                <span asp-validation-for="Location" class="text-primary"></span>
+                            </div>
 
-                    <div class="mb-3">
-                        <label for="Schedule" class="form-label">Schedule</label>
-                        <input type="text" class="form-control" id="Schedule" name="Schedule" value="@Model?.Schedule" placeholder="Enter schedule">
-                        <span asp-validation-for="Schedule" class="text-primary"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="formFile" class="form-label mt-4">Upload Image</label>
-                        <input class="form-control" type="file" id="formFile" name="ImageFile" value="@Model?.ImageUrl" placeholder="Enter image URL">
-                        <span asp-validation-for="ImageUrl" class="text-primary"></span>
-                    </div>
-                  
-                    <button type="submit" class="btn btn-dark mt-4">Submit</button>
-                </fieldset>
-            </form>
+                            <div class="mb-3">
+                                <label for="Schedule" class="form-label">Schedule</label>
+                                <input type="text" class="form-control" id="Schedule" name="Schedule" value="@Model?.Schedule" placeholder="Enter schedule">
+                                <span asp-validation-for="Schedule" class="text-primary"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label mt-4">Upload Image</label>
+                                <input class="form-control" type="file" id="formFile" name="file" onchange="previewImage(event)">
+                                <span asp-validation-for="ImageUrl" class="text-primary"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-dark mt-4">Submit</button>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="card-title">Preview</h5>
+                    <img id="imagePreview" src="@Model?.ImageUrl" class="img-fluid" alt="Course Image Preview" style="max-width: 100%;">
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 @section Scripts {
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('imagePreview');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }

@@ -1,5 +1,54 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<OnlineFoodClass.Models.Course>
+
 @{
+    ViewData["Title"] = "Courses";
+    int count = 1;
 }
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between mb-3 flex-wrap">
+        <h2 class="mb-3">Courses</h2>
+        <a asp-action="Create" class="btn btn-dark mb-3">Create New Course</a>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Course List
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var course in Model)
+                        {
+                            <tr class="align-middle">
+                                <th scope="row">@(count++)</th>
+                                <td>
+                                    <img src="@course.ImageUrl" alt="Course Image" class="img-fluid" style="width: 100px; height: 100px; object-fit: cover;">
+                                </td>
+                                <td>@course.Name</td>
+                                <td>@(course.Description.Length > 50 ? course.Description.Substring(0, 50) + "..." : course.Description)</td>
+                                <td>Tshs @course.Price</td>
+                                <td>
+                                    <div class="d-flex justify-content-center flex-wrap">
+                                        <a asp-action="Edit" asp-route-id="@course.Id" class="btn btn-success btn-sm mx-1 mb-1">Edit</a>
+                                        <a asp-action="Delete" asp-route-id="@course.Id" class="btn btn-primary btn-sm mx-1 mb-1">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

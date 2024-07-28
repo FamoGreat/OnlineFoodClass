@@ -1,0 +1,32 @@
+﻿@model Course
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<div class="container mt-5">
+    <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="@Model.ImageUrl" class="card-img" alt="Course Image" style="width: 100%; object-fit: cover;">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title text-decoration-underline">@Model.Name</h3>
+                    <p class="card-text">@Model.Description</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><strong>Start Date:</strong> @Model.StartDate.ToString("yyyy-MM-dd")</li>
+                        <li class="list-group-item"><strong>End Date:</strong> @Model.EndDate.ToString("yyyy-MM-dd")</li>
+                        <li class="list-group-item"><strong>Location:</strong> @Model.Location</li>
+                        <li class="list-group-item"><strong>Schedule:</strong> @Model.Schedule</li>
+                    </ul>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <h6 class="card-subtitle text-muted mb-0">Price: <strong>Tshs @Model.Price</strong></h6>
+                        <a asp-action="Index" class="btn btn-dark ml-3">Buy</a>
+                    </div>
+                    <a asp-action="Index" class="btn btn-secondary mt-3">Back to Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
