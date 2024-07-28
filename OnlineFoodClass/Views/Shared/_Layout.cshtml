@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/OnlineFoodClass.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 </head>
 <body>
     <header>
@@ -22,7 +23,12 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                   
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="CustomerCourse" asp-action="Index">Course</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Blog" asp-action="Index">Blog</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Content Management
@@ -46,11 +52,22 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer">
         <div class="container">
-            &copy; 2024 - OnlineFoodClass - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="social-links mt-3">
+                <a href="https://www.facebook.com/YourPage" target="_blank" style="color: #007bff;">Facebook</a> |
+                <a href="https://www.instagram.com/YourProfile" target="_blank" style="color: #007bff;">Instagram</a> |
+                <a href="https://wa.me/YourWhatsAppNumber" target="_blank" style="color: #007bff;">WhatsApp</a>
+            </div>
+            <div class="contact-info mt-3">
+                <p>Contact: +255 746 555 500</p>
+                <p>Email: contact@onlinefoodclass.com</p>
+                <p>Address: 123 Food Street, Dar es salaam Tanzania</p>
+            </div>
+            &copy; 2024 - OnlineFoodClass -
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

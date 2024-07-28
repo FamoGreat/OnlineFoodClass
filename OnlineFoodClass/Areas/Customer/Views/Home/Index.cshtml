@@ -1,29 +1,46 @@
-﻿@model IEnumerable<Course>
+﻿@model IEnumerable<OnlineFoodClass.Models.Course>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Online Food Class";
 }
 
-<div class="container mt-5">
+<div class="hero">
+    <h1>Welcome to Online Food Class</h1>
+    <p>Learn to cook delicious meals from the comfort of your home.</p>
+    <a href="#" class="btn">Get Started</a>
+</div>
+
+<div class="features">
+    <h2>Why Choose Us?</h2>
+    <div class="row">
+        <div class="col-md-4 feature-item">
+            <img src="~/images/feature/wabishi.jpeg" alt="Feature 1">
+            <h3>Expert Chefs</h3>
+            <p>Learn from the best chefs around the world.</p>
+        </div>
+        <div class="col-md-4 feature-item">
+            <img src="~/images/feature/ratiba.jpeg" alt="Feature 2">
+            <h3>Flexible Schedule</h3>
+            <p>Access courses at any time that suits you.</p>
+        </div>
+        <div class="col-md-4 feature-item">
+            <img src="~/images/feature/support.jpeg" alt="Feature 3">
+            <h3>Community Support</h3>
+            <p>Join a community of food enthusiasts.</p>
+        </div>
+    </div>
+</div>
+
+<div class="courses">
+    <h2>Our Courses</h2>
     <div class="row">
         @foreach (var course in Model)
         {
-            <div class="col-md-4 mb-3">
-                <a asp-action="Details" asp-route-id="@course.Id" class="card-link" style="text-decoration: none; color: inherit;">
-                    <div class="card mb-3">
-                        <img src="@course.ImageUrl" class="d-block user-select-none" width="100%" height="200" alt="Course Image" style="object-fit: cover;">
-
-                        <div class="card-body">
-                            <h3 class="card-text text-decoration-underline"><strong>@course.Name</strong></h3>
-                            <p class="card-text">@course.Description.Substring(0, 100)...</p>
-                            <h6 class="card-subtitle text-muted">Price: <strong>Tshs @course.Price</strong></h6>
-                            <p class="card-text">
-                                Last updated @course.EndDate.ToString("yyyy-MM-dd")
-                            </p>
-                        </div>
-                    </div>
-                </a>
-
+            <div class="col-md-4 course-item">
+                <img src="@course.ImageUrl" alt="@course.Name">
+                <h3>@course.Name</h3>
+                <p>@course.Description.Substring(0, 60)...</p>
+                <a href="@Url.Action("Details", "CustomerCourse", new { id = course.Id })" class="btn">Learn More</a>
             </div>
         }
     </div>

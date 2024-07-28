@@ -15,11 +15,19 @@ html {
     min-height: 100%;
 }
 
-/* Add margin to the bottom of the body for footer spacing */
+/* Add padding to the bottom of the body for footer spacing */
 body {
-    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
-
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
 /* Additional utility classes if needed */
 .table-responsive img {
     width: 100px;
@@ -30,3 +38,134 @@ body {
 .card-footer .btn {
     margin-bottom: 0.5rem;
 }
+/* Header styling */
+header {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 0;
+}
+
+    header .navbar-brand {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    header .navbar-nav .nav-link {
+        color: white;
+    }
+
+/* Hero section */
+.hero {
+    background: url('path/to/your/image.jpg') no-repeat center center;
+    background-size: cover;
+    color: #343a40; /* Dark text color */
+    text-align: center;
+    padding: 100px 20px;
+}
+
+    .hero h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 1.5em;
+        margin-bottom: 40px;
+    }
+
+    .hero .btn {
+        background-color: #343a40;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        border: none;
+        cursor: pointer;
+    }
+
+        .hero .btn:hover {
+            background-color: #23272b;
+        }
+
+/* Features section */
+.features {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+    .features h2 {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+
+.feature-item {
+    margin-bottom: 40px;
+}
+
+    .feature-item img {
+        max-width: 100px;
+        margin-bottom: 20px;
+    }
+
+    .feature-item h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .feature-item p {
+        font-size: 1em;
+        color: #666;
+    }
+
+/* Courses section */
+.courses {
+    padding: 50px 20px;
+}
+
+    .courses h2 {
+        text-align: center;
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+
+.course-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+    .course-item:hover {
+        transform: scale(1.05);
+    }
+
+    .course-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .course-item h3 {
+        font-size: 1.5em;
+        margin-top: 20px;
+    }
+
+    .course-item p {
+        color: #666;
+    }
+
+    .course-item .btn {
+        background-color: #343a40;
+        color: white;
+        padding: 10px 20px;
+        margin-top: 20px;
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+    }
+
+        .course-item .btn:hover {
+            background-color: #23272b;
+        }

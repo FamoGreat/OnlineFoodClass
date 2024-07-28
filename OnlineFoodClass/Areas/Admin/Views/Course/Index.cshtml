@@ -1,9 +1,10 @@
-﻿@model IEnumerable<OnlineFoodClass.Models.Course>
+﻿@model IEnumerable<Course>
 
 @{
     ViewData["Title"] = "Courses";
     int count = 1;
 }
+<partial name="_Notification" />
 
 <div class="container mt-5">
     <div class="d-flex justify-content-between mb-3 flex-wrap">

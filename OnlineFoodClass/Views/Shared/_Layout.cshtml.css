@@ -39,10 +39,39 @@ button.accept-policy {
   line-height: inherit;
 }
 
+/* Footer styling */
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: static;
+    left: 0;
+    bottom: 0; 
+    width: 100%;
+    background-color: #343a40; /* Dark background color */
+    color: white;
+    text-align: center;
+    padding: 20px 0; /* Ensure the footer is visible */
 }
+
+    .footer .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer .social-links {
+        margin-top: 10px;
+    }
+
+        .footer .social-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff; /* Bootstrap primary color */
+        }
+
+    .footer .contact-info {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+        .footer .contact-info p {
+            margin: 5px 0;
+        }

@@ -19,17 +19,8 @@ namespace OnlineFoodClass.Areas.Customer.Controllers
         public async Task<IActionResult> Index()
         {
             var courses = await _unitOfWork.Course.GetAllAsync();
-            return View(courses);
-        }
-
-        public async Task<IActionResult> Details(int id)
-        {
-            var course = await _unitOfWork.Course.GetAsync(c => c.Id == id);
-            if (course == null)
-            {
-                return NotFound();
-            }
-            return View(course);
+            var topThreeCourses = courses.Take(3).ToList();
+            return View(topThreeCourses);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
