@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OnlineFoodClass.Models.Course>
+﻿@model OnlineFoodClass.Models.HomeViewModel
 
 @{
     ViewData["Title"] = "Online Food Class";
@@ -34,7 +34,7 @@
 <div class="courses">
     <h2>Our Courses</h2>
     <div class="row">
-        @foreach (var course in Model)
+        @foreach (var course in Model.Courses)
         {
             <div class="col-md-4 course-item">
                 <img src="@course.ImageUrl" alt="@course.Name">
@@ -43,5 +43,31 @@
                 <a href="@Url.Action("Details", "CustomerCourse", new { id = course.Id })" class="btn">Learn More</a>
             </div>
         }
+    </div>
+</div>
+
+<div class="testimonials">
+    <h2>What Our Students Say</h2>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach (var testimonial in Model.Testimonials)
+            {
+                <div class="carousel-item @(Model.Testimonials.IndexOf(testimonial) == 0 ? "active" : "")">
+                    <div class="testimonial-item text-center">
+                        <img src="@testimonial.ImageUrl" class="rounded-circle" alt="@testimonial.Name">
+                        <h3>@testimonial.Name</h3>
+                        <p>@testimonial.Comment</p>
+                    </div>
+                </div>
+            }
+        </div>
+        <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
     </div>
 </div>
